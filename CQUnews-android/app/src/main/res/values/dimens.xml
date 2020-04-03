@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="tabHeight">60dp</dimen>
+    <dimen name="tabFont">40sp</dimen>
+    <dimen name="pagerPad">5dp</dimen>
+    <dimen name="listHeight">100dp</dimen>
+    <dimen name="list_title">20sp</dimen>
+    <dimen name="list_author">14sp</dimen>
+    <dimen name="list_pad">10dp</dimen>
+    <dimen name="list_submargin">10dp</dimen>
+    <dimen name="digest">18sp</dimen>
+    <dimen name="content">18sp</dimen>
+    <dimen name="news_margin">10dp</dimen>
+    <dimen name="news_label">18sp</dimen>
+    <dimen name="news_title">24sp</dimen>
+    <dimen name="news_author">14sp</dimen>
+    <dimen name="news_pad">20dp</dimen>
+    <dimen name="digest_pad">10dp</dimen>
+    <dimen name="content_pad">5dp</dimen>
+</resources>

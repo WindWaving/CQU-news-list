@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="colorBkg">#b0c0d8</color>
+    <color name="colorTitleBar">#98a8a0</color>
+    <color name="colorTabFont">#eee</color>
+    <color name="colorTabBar">#98a9</color>
+    <color name="tabIndicator">#d0d048</color>
+    <color name="tabSelected">#a0a020</color>
+    <color name="colorList">#a8b8</color>
+    <color name="colorListFont">#333</color>
+    <color name="colorNewsBkg">#d8e0d8</color>
+    <color name="colorSubFont">#444</color>
+    <color name="colorDigestBkg">#c8d0d8</color>
+</resources>

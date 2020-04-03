@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/listHeight"
+    android:orientation="vertical"
+    android:background="@color/colorList"
+    android:padding="@dimen/list_pad"
+    android:gravity="center_vertical"
+    android:layout_margin="@dimen/news_margin">
+
+    <TextView
+        android:id="@+id/list_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="这是一条测试标题"
+        android:singleLine="true"
+        android:textSize="@dimen/list_title"
+        android:textColor="@color/colorListFont"/>
+    <TextView
+        android:id="@+id/list_author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:text="测试作者"
+        android:layout_marginStart="@dimen/list_submargin"
+        android:layout_marginEnd="@dimen/list_submargin"
+        android:layout_marginTop="3dp"
+        android:textSize="@dimen/list_author" />
+    <TextView
+        android:id="@+id/list_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:layout_marginStart="@dimen/list_submargin"
+        android:layout_marginEnd="@dimen/list_submargin"
+        android:text="2020-01-05"
+        android:textColor="@color/colorListFont" />
+
+</LinearLayout>

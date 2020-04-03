@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:fillViewport="true"
+    android:background="@color/colorBkg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <!--    tabbar-->
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/tabHeight"
+            android:background="@color/colorTabBar"
+            app:tabTextColor="@color/colorTabFont"
+            app:tabIndicatorColor="@color/tabIndicator"
+            app:tabSelectedTextColor="@color/tabSelected"></com.google.android.material.tabs.TabLayout>
+
+        <!--    news-->
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBkg"
+            android:padding="@dimen/pagerPad"></androidx.viewpager.widget.ViewPager>
+
+    </LinearLayout>
+
+</ScrollView>
