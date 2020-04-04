@@ -1,22 +1,16 @@
+/**
+ * update service:
+ * to update the news list from server
+ * call this by `startservice`
+ */
 package com.news.cqunews;
 
 import android.app.IntentService;
 import android.content.Intent;
-import android.os.Parcelable;
-import android.util.Log;
-
 import androidx.annotation.Nullable;
-
-import org.json.JSONArray;
-
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 public class UpdateService extends IntentService {
 
-//    public static JSONArray NEWS_ARRAY;
     public UpdateService(){
         super("create a servcie");
     }
@@ -32,11 +26,11 @@ public class UpdateService extends IntentService {
 
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
-//        String label=intent.getStringExtra("label");//get value from intent
         String label=GetGlobals.CUR_LABEL;
-//        System.out.println(label);
+        System.out.println("update service");
         try {
             GetGlobals.NEWS_ARRAY=NewsHttpUtil.reqNews(label);//send request to get new data
+            GetGlobals.PAGE_INIT.put(GetGlobals.CUR_LABEL,Boolean.FALSE);// the en_news should update
             Intent broadIntent=new Intent(NewsFragment.SERVICE_RECEIVER);
             getApplicationContext().sendBroadcast(broadIntent);
         } catch (InterruptedException e) {

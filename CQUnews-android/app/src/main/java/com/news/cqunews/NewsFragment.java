@@ -1,3 +1,7 @@
+/**
+ * dynamically set the fragments when tabs selected changed
+ * you can create a fragment by using `NewsFragment.Instance`
+ */
 package com.news.cqunews;
 
 import android.content.BroadcastReceiver;
@@ -7,7 +11,6 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.os.health.SystemHealthManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -83,7 +86,6 @@ public class NewsFragment extends Fragment {
             //get parameters
             if(getArguments()!=null){
                 String label=getArguments().getString("label");
-                System.out.println(label);
                 try {
                     // net is required
                     ConnectivityManager manager=(ConnectivityManager)getContext().getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -93,6 +95,7 @@ public class NewsFragment extends Fragment {
                             Toast.makeText(getContext(), "Please connect to network", Toast.LENGTH_LONG).show();
                         } else {
                             newsArr = NewsHttpUtil.reqNews(label);
+                            GetGlobals.ZH_NEWS.put(GetGlobals.CUR_LABEL,newsArr);// put every page into ZH_news
                             initData(0);
                         }
                     }
@@ -105,7 +108,6 @@ public class NewsFragment extends Fragment {
             if(parent!=null){
                 parent.removeView(rootview);
             }
-            System.out.println(newsArr);
         }
 
         return rootview;
@@ -119,6 +121,9 @@ public class NewsFragment extends Fragment {
     private void initData(int init){
         if(init==1){
             newsList=getActivity().findViewById(R.id.newslist);
+            if(GetGlobals.LANG.get(GetGlobals.LANG)=="zh"){
+                GetGlobals.ZH_NEWS.put(GetGlobals.CUR_LABEL,newsArr);//update the zh_news
+            }
         }
         int news_cnt=newsArr.length();
 

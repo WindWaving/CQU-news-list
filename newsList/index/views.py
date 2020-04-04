@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import HttpResponse
 from lxml import html
 import requests
 import re
@@ -7,7 +7,8 @@ from multiprocessing.dummy import Pool
 # Create your views here.
 from . import models
 
-
+'''
+'''
 def main_spider(self):
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36',
@@ -17,10 +18,11 @@ def main_spider(self):
     labellist = spider.get_labels()  # get all the labels
     for label in labellist:
         pool = Pool(4)  # multiple process
-        itemlist = spider.get_by_label(label, 11)  # links of news as list
+        itemlist = spider.get_by_label(label, 3)  # links of news as list
         pool.map(spider.get_news_content, itemlist)  # get news content
         pool.close()
         pool.join()
+    return HttpResponse('everything is ok')
 
 
 class NewsSpider:

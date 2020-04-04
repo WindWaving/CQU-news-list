@@ -1,18 +1,13 @@
+/*
+* request the news from server
+* call `NewsHttpUtil.reqNews` to use it
+ */
 package com.news.cqunews;
 
-import android.content.Context;
-import android.icu.util.LocaleData;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.util.Log;
-import android.widget.Toast;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -40,7 +35,8 @@ public class NewsHttpUtil {
         Thread subThread =new Thread(new Runnable() {
             @Override
             public void run() {
-                String baseUrl="http://192.168.101.2:8780/";//the localhost in genymotion
+//                String baseUrl="http://192.168.101.2:8780/";//the localhost in genymotion
+                String baseUrl="http://windwaving.pythonanywhere.com/"; // remote server
                 String serverUrl="";
                 // request different address according to the label
                 switch (label) {

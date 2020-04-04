@@ -1,3 +1,7 @@
+/**
+ * show details of news
+ * this is releted to news_detail.xml
+ */
 package com.news.cqunews;
 
 import android.content.Intent;

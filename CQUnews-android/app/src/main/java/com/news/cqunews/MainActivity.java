@@ -1,3 +1,6 @@
+/**
+ *
+ */
 package com.news.cqunews;
 
 import androidx.annotation.NonNull;
@@ -8,15 +11,17 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
-
+import org.json.JSONArray;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -47,6 +52,11 @@ public class MainActivity extends AppCompatActivity {
         return true;// true:show the menu
     }
 
+    /**
+     * menu events
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
@@ -56,12 +66,17 @@ public class MainActivity extends AppCompatActivity {
                         .setPositiveButton("Close",null)
                         .create();
                 about.show();
+                break;
             case R.id.update_menu:// start update service
                 Intent intent=new Intent(MainActivity.this,UpdateService.class);
-//                intent.putExtra("label",GetGlobals.CUR_LABEL);
-//                intent.putExtra("pos",i);
                 startService(intent);
-
+                break;
+            case R.id.lang_menu:
+                GetGlobals.NEWS_ARRAY=GetGlobals.ZH_NEWS.get(GetGlobals.CUR_LABEL);//NEWS_ARRAY: news list in current page
+                Intent transIntent=new Intent(MainActivity.this,TranslateService.class);
+                startService(transIntent);
+                Toast.makeText(this,"Translating...,please wait a moment...",Toast.LENGTH_LONG).show();
+                break;
             default:
                 break;
         }
@@ -86,9 +101,20 @@ public class MainActivity extends AppCompatActivity {
         labels=new String[]{"综合新闻", "教学科研","招生就业","交流合作","校园生活","媒体重大"};
         tab_cnts=labels.length;
         //init fragments
+        GetGlobals.NEWS_ARRAY=new JSONArray();
         fragments=new ArrayList<>();
         for(int i=0;i<tab_cnts;++i){
             fragments.add(NewsFragment.Instance(labels[i]));
+        }
+        //init some global variables
+        GetGlobals.ZH_NEWS=new HashMap<String, JSONArray>();
+        GetGlobals.EN_NEWS=new HashMap<String, JSONArray>();
+        GetGlobals.PAGE_INIT=new HashMap<String, Boolean>();
+        GetGlobals.LANG=new HashMap<String,String>();
+        GetGlobals.CUR_LABEL="综合新闻";
+        for(int i=0;i<tab_cnts;++i){
+            GetGlobals.PAGE_INIT.put(labels[i],Boolean.FALSE);//not loaded yet
+            GetGlobals.LANG.put(labels[i],"zh");
         }
     }
 
@@ -108,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 GetGlobals.CUR_LABEL=tab.getText().toString();
+                System.out.println("current "+GetGlobals.CUR_LABEL);
             }
 
             @Override

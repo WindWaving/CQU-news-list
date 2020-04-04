@@ -24,7 +24,7 @@ SECRET_KEY = 'y546=nikb&#8(n*f1=y6j#i%ykuxr(#mht#^3(3ss*)^60@d@f'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.43.18','192.168.101.2','localhost']# phone and genymotion
+ALLOWED_HOSTS = [ '*' ]# allow  all the IP
 
 # Application definition
 
@@ -79,6 +79,11 @@ DATABASES = {
         'PASSWORD': 'usbw',
         'HOST': 'localhost',
         'PORT': '3307'
+        # 'NAME': 'WindWaving$newsdb',
+        # 'USER': 'WindWaving',
+        # 'PASSWORD': 'rootroot',
+        # 'HOST': 'WindWaving.mysql.pythonanywhere-services.com',
+        # 'PORT': '10060'
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }

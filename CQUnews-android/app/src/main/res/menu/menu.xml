@@ -2,4 +2,5 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/about_menu" android:title="about"/>
     <item android:id="@+id/update_menu" android:title="update(current page)"/>
+    <item android:id="@+id/lang_menu" android:title="lang(en/zh)"/>
 </menu>
